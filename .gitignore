@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Node / Vite
+node_modules/
+dist/
+
+# Environment files (keep the .env.example files!)
+.env
+.env.*
+!.env.example
+
+# Ollama model files never belong in Git (they live in ~/.ollama)
+*.gguf
+*.safetensors
+.ollama/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

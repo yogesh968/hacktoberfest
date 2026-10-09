@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+/* Design tokens — Tailwind v4 turns these into classes like bg-cream, text-moss-700, font-display */
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces Variable", Georgia, serif;
+
+  --color-cream: #f8f4ea;
+  --color-cream-dark: #efe8d6;
+  --color-paper: #fffdf8;
+
+  --color-moss-50: #f1f6ee;
+  --color-moss-100: #dfead7;
+  --color-moss-200: #c3d9b5;
+  --color-moss-300: #9cc58a;
+  --color-moss-500: #5a8a4f;
+  --color-moss-600: #457040;
+  --color-moss-700: #2f5d3a;
+  --color-moss-900: #1c3322;
+
+  --color-soil: #7a5a3c;
+  --color-clay: #c9784f;
+  --color-clay-light: #f6e3d6;
+  --color-sun: #e8b44a;
+  --color-sun-light: #fbf0d4;
+  --color-ink: #26302a;
+  --color-ink-soft: #56615a;
+
+  --shadow-soft: 0 1px 2px rgb(38 48 42 / 0.04), 0 8px 24px -8px rgb(38 48 42 / 0.12);
+
+  --animate-rise: rise 0.5s ease-out both;
+  --animate-sway: sway 6s ease-in-out infinite;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+  }
+  h1, h2, h3 { @apply font-display text-moss-900; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-moss-600; }
+  section[id] { scroll-margin-top: 5rem; }
+}
+
+@layer components {
+  .card { @apply bg-paper rounded-3xl border border-cream-dark shadow-soft; }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-moss-700 px-6 py-3 font-semibold text-cream
+      transition hover:bg-moss-900 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-moss-200 bg-paper px-5 py-2.5
+      font-medium text-moss-700 transition hover:bg-moss-50 disabled:opacity-60;
+  }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.14em] text-moss-600; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
